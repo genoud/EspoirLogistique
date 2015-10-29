@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Voyage" table="voyage">
+    <indexes>
+      <index name="FK_VoyageSemiremorque" columns="SemiRemorque_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="datedepart" type="datetime" column="dateDepart" nullable="true"/>
+    <field name="datearrive" type="datetime" column="dateArrive" nullable="true"/>
+    <field name="dateretour" type="datetime" column="dateRetour" nullable="true"/>
+    <field name="villearrive" type="string" column="villeArrive" length="254" nullable="true"/>
+    <field name="marchandises" type="string" column="marchandises" length="254" nullable="true"/>
+    <field name="montant" type="decimal" column="montant" precision="8" scale="0" nullable="true"/>
+    <field name="etat" type="string" column="etat" length="254" nullable="true"/>
+    <field name="observations" type="string" column="observations" length="254" nullable="true"/>
+    <many-to-one field="semiremorque" target-entity="Semiremorque">
+      <join-columns>
+        <join-column name="SemiRemorque_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

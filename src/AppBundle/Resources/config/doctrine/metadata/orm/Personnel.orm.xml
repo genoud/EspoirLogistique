@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Personnel" table="personnel">
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="254" nullable="true"/>
+    <field name="prenom" type="string" column="prenom" length="254" nullable="true"/>
+    <field name="datenais" type="datetime" column="dateNais" nullable="true"/>
+    <field name="lieunais" type="string" column="lieuNais" length="254" nullable="true"/>
+    <field name="cni" type="string" column="cni" length="254" nullable="true"/>
+    <field name="datedel" type="datetime" column="dateDel" nullable="true"/>
+    <field name="lieudel" type="string" column="lieuDel" length="254" nullable="true"/>
+    <field name="telephone" type="string" column="telephone" length="254" nullable="true"/>
+    <field name="email" type="string" column="email" length="254" nullable="true"/>
+    <field name="fonction" type="string" column="fonction" length="254" nullable="true"/>
+    <field name="salaire" type="decimal" column="salaire" precision="8" scale="0" nullable="true"/>
+  </entity>
+</doctrine-mapping>

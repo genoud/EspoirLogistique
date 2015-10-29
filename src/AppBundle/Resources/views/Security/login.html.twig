@@ -1,0 +1,32 @@
+{# empty Twig template #}
+{%extends '::base.html.twig'%}
+{% block body %}
+
+    <div class="panel panel-default login-panel">
+        <div class="panel-heading">Authentification</div>
+        <div class="panel-body">
+            {% if error %}
+                <div class="error">{{ error.message }}</div>
+            {% endif %}
+
+            <form action="{{ path('el_login_check') }}" method="post">
+                <div class="form-group">
+                    <label for="username">Login :</label>
+                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe :</label>
+                    <input type="password" class="form-control" id="password" name="_password" />
+                </div>
+                {#
+                Si vous voulez contrôler l'URL vers laquelle l'utilisateur est redirigé en cas de
+                succès
+                (plus de détails ci-dessous) <input type="hidden" name="_target_path" value="/account" />
+                #}
+                <button type="submit" class="btn btn-default">Se connecter</button>
+            </form>
+        </div>
+    </div>
+
+
+{% endblock %}

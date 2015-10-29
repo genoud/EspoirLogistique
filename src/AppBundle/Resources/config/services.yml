@@ -1,0 +1,31 @@
+## YAML Template.
+services:
+    el_service : 
+        class : AppBundle\Bll\ElService
+        arguments : ["@doctrine.orm.entity_manager", "@security.encoder_factory", "@security.token_storage", "@session"]
+    pdo:
+        class: PDO
+        arguments:
+            dsn: "mysql:dbname=%database_name%"
+            user: "%database_user%"
+            password: "%database_password%"
+        calls:
+            - [setAttribute, [3, 2]] # \PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION
+    session.handler.pdo:
+        class:
+            Symfony\Component\HttpFoundation\Session\Storage\Handler\PdoSessionHandler
+        arguments: [@pdo, %pdo.db_options%]
+        
+#    u2g_capv_core.form.type.personne:
+#        class: U2g\Capv\CoreBundle\Form\Type\PersonneType
+#        tags:
+#            - { name: form.type, alias: personne }
+#    u2g_capv_core.form.type.contact:
+#        class: U2g\Capv\CoreBundle\Form\Type\ContactType
+#        tags:
+#            - { name: form.type, alias: contact }
+#    u2g_capv_core.form.type.role:
+#        class: U2g\Capv\CoreBundle\Form\Type\RoleType
+#        tags:
+#            - { name: form.type, alias: role }
+#        arguments : ["@coreservice"]

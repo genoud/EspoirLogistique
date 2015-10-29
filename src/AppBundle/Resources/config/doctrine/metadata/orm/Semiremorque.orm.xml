@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Semiremorque" table="semiremorque">
+    <indexes>
+      <index name="FK_Remorque" columns="Tracteur_id"/>
+      <index name="FK_Tacteur" columns="Remorque_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="datecreation" type="datetime" column="dateCreation" nullable="true"/>
+    <field name="etat" type="string" column="etat" length="254" nullable="true"/>
+    <field name="datedissociation" type="datetime" column="dateDissociation" nullable="true"/>
+    <field name="description" type="string" column="description" length="254" nullable="true"/>
+    <many-to-one field="tracteur" target-entity="Vehicule">
+      <join-columns>
+        <join-column name="Tracteur_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="remorque" target-entity="Vehicule">
+      <join-columns>
+        <join-column name="Remorque_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

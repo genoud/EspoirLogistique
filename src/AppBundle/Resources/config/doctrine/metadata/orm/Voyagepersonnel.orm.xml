@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Voyagepersonnel" table="voyagepersonnel">
+    <indexes>
+      <index name="FK_Voyage_Personnel_1" columns="Voyage_id"/>
+      <index name="FK_Voyage_Personnel_2" columns="Personnel_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="AUTO"/>
+    </id>
+    <field name="fraisderoute" type="decimal" column="fraisDeRoute" precision="8" scale="0" nullable="true"/>
+    <field name="fonction" type="string" column="fonction" length="254" nullable="true"/>
+    <field name="note" type="decimal" column="note" precision="8" scale="0" nullable="true"/>
+    <field name="observation" type="string" column="observation" length="254" nullable="true"/>
+    <many-to-one field="voyage" target-entity="Voyage">
+      <join-columns>
+        <join-column name="Voyage_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="personnel" target-entity="Personnel">
+      <join-columns>
+        <join-column name="Personnel_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,5 @@
+## YAML Template.
+el_login_check:
+    path:     /login_check
+el_logout:
+    path:     /logout

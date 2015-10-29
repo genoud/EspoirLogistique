@@ -1,0 +1,16 @@
+.error{
+    color: red;
+}
+.login-panel{
+    width: 420px;
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+}
+body{
+    
+    background-image: url('../images/bg-image-reduit.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
